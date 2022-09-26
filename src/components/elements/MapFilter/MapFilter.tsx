@@ -35,7 +35,7 @@ const MapFilter: React.FC<React.ComponentPropsWithoutRef<'details'>> = (
 ) => {
     return (
         <Details {...props}>
-            <span className={s.summary}>Map Filtr</span>
+            <span className={s.summary}>Map Filter</span>
             <ul className={s.list}>
                 {items.map((item) => (
                     <li key={item.heading}>

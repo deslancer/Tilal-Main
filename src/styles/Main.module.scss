@@ -46,6 +46,7 @@
     position: absolute;
     right: 30px;
     top: 50%;
+    z-index: 2;
     transform: translateX(-50%);
     @include respond-below(md) {
         visibility: hidden;
@@ -58,8 +59,16 @@
     position: fixed;
     right: 20px;
     bottom: 20px;
+    z-index: 2;
     @include respond-above(md) {
         width: 76px;
         height: 77px;
     }
+}
+.mapbox_container {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 0;
+    inset: 0;
 }
