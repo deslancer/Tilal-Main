@@ -1,0 +1,21 @@
+@import '../../../styles/media_queries';
+
+.typesMenu {
+    margin-top: auto;
+    @include respond-above(md) {
+        order: 2;
+        margin-top: 20px;
+    }
+}
+
+.breadcrumbs {
+    @include respond-above(md) {
+        order: 1;
+    }
+}
+
+.filter {
+    @include respond-above(md) {
+        order: 3;
+    }
+}

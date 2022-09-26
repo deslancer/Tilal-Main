@@ -1,0 +1,30 @@
+@import '../../../styles/media_queries';
+.planContainer {
+    margin-top: 20px;
+}
+
+.pageMenuWrapper {
+    @include respond-above(md) {
+        max-width: 300px;
+        padding: 0;
+    }
+}
+
+.floatingGallery {
+    @include respond-above(md) {
+        width: 210px;
+        position: fixed;
+        bottom: 20px;
+        right: 116px;
+    }
+    @include respond-above(md-big) {
+        width: 280px;
+        right: 120px;
+    }
+}
+
+.houseMapWrapper {
+    @include respond-above(md-big) {
+        width: 100%;
+    }
+}

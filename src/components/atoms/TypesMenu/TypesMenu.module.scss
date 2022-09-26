@@ -1,0 +1,34 @@
+@import '../../../styles/media_queries';
+.menu {
+    padding: 10px 12px;
+    width: max-content;
+    display: flex;
+    align-items: center;
+    gap: 26px;
+
+    background: rgba(255, 255, 255, 0.9);
+    /* Blur_Button_Bg */
+
+    backdrop-filter: blur(5px);
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 2px;
+}
+
+.title {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 13px;
+    text-transform: uppercase;
+}
+
+.list {
+    display: flex;
+    gap: 10px;
+}
+
+.button {
+    @include respond-above(lg) {
+        font-size: 50px;
+    }
+}

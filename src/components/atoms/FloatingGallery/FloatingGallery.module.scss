@@ -1,0 +1,59 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 20px;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    /* Blur_Button_Bg */
+
+    backdrop-filter: blur(5px);
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 2px;
+}
+
+.information {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.heading {
+    justify-self: flex-start;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 13px;
+    text-transform: uppercase;
+}
+
+.closeButton {
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    .closeIcon {
+        width: inherit;
+        height: inherit;
+    }
+}
+
+.galleryList {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: inherit;
+}
+
+.galleryListItem {
+    border: 1px solid #636363;
+    border-radius: 2px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.galleryListImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

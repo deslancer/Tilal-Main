@@ -1,0 +1,17 @@
+@import '../styles/media_queries';
+.defaultButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 10px 6px;
+    gap: 10px;
+    border-radius: 2px;
+
+    font-size: 14px;
+    line-height: 13px;
+    @include respond-above(md) {
+        padding: 10px 15px;
+        font-size: 15px;
+        line-height: 14px;
+    }
+}

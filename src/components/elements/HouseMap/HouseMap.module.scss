@@ -1,0 +1,93 @@
+@import '../../../styles/media_queries';
+
+.wrapper {
+    display: flex;
+    gap: 10px;
+    @include respond-above(md-big) {
+        flex-wrap: wrap;
+        row-gap: 40px;
+    }
+}
+
+.navigation {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 10px;
+}
+.navigationButton {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    @include respond-above(md-big) {
+        width: 44px;
+        height: 44px;
+    }
+}
+.mapMarker {
+    width: 9.05px;
+    height: 9.05px;
+    position: relative;
+    /* System/Purpl */
+
+    background: #954098;
+    border-radius: 50%;
+    box-sizing: content-box;
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 180%;
+        height: 180%;
+        background-color: rgba(151, 71, 255, 0.3);
+        border-radius: inherit;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
+    &__active {
+        background: #11b39b;
+        &::before {
+            background-color: rgba(17, 179, 155, 0.3);
+        }
+    }
+}
+.map {
+    height: 190px;
+    position: relative;
+    .mapImage {
+        height: 100%;
+    }
+    .mapMarker {
+        position: absolute;
+    }
+    @include respond-above(md-big) {
+        height: 210px;
+    }
+}
+.slider {
+    width: 430px;
+    align-self: end;
+    @include respond-above(md-big) {
+        width: 100%;
+        margin: 0 calc((100% - 820px) / 2);
+        overflow: hidden;
+        :global(.splide) {
+            position: relative;
+            left: 60px;
+        }
+    }
+    @include respond-above(lg) {
+        width: 820px;
+        margin: 0;
+        margin-left: 60px;
+        :global(.splide) {
+            position: static;
+        }
+    }
+    @include respond-above(full-hd) {
+        margin: 0 auto;
+    }
+}

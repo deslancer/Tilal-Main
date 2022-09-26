@@ -1,0 +1,25 @@
+.button {
+    padding-top: 0.227em;
+    width: 1em;
+    height: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 44px;
+    gap: 0.045em;
+    border-radius: 0.1em;
+    color: #ffffff;
+}
+
+.type {
+    font-weight: 400;
+    font-size: 0.4em;
+    line-height: 0.94em;
+}
+
+.subtext {
+    font-weight: 400;
+    font-size: 0.22em;
+    line-height: 0.9em;
+}

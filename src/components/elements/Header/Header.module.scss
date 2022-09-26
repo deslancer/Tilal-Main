@@ -1,0 +1,85 @@
+@import '../../../styles/media_queries';
+.header {
+    padding: 0 16px;
+    height: 62px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.6) 0%,
+        rgba(0, 0, 0, 0.44) 36.46%,
+        rgba(0, 0, 0, 0.11) 70.83%,
+        rgba(0, 0, 0, 0) 100%
+    );
+    @include respond-below(md) {
+        &__opened {
+            background: #ffffff;
+        }
+    }
+    @include respond-above(md) {
+        height: 74px;
+    }
+    @include respond-above(md-big) {
+        height: 80px;
+    }
+    @include respond-above(lg) {
+        justify-content: end;
+        position: relative;
+    }
+}
+
+.logo {
+    img {
+        height: 100%;
+    }
+    @include respond-above(md) {
+        height: 40px;
+    }
+    @include respond-above(lg) {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+.headerMenu {
+    position: absolute;
+    top: 62px;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    height: calc(100vh - 62px);
+    z-index: 4;
+    @include respond-above(md) {
+        max-width: 237px;
+        height: max-content;
+        top: 74px;
+        padding: 10px;
+        right: 0;
+        left: unset;
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 2px;
+    }
+    @include respond-above(md-big) {
+        top: 80px;
+        max-width: 260px;
+    }
+}
+
+.headerButtonsWrapper {
+    width: max-content;
+    @include respond-above(md) {
+        display: flex;
+        justify-content: space-between;
+        width: 260px;
+    }
+}
+
+.langButtons {
+    display: flex;
+    gap: 8px;
+
+    @include respond-below(md) {
+        display: none;
+    }
+}

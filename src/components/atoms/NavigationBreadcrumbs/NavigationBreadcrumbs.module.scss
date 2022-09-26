@@ -1,0 +1,60 @@
+@import '../../../styles/media_queries';
+
+.list {
+    width: max-content;
+    display: flex;
+    align-items: center;
+    padding: 6px;
+    gap: 12px;
+
+    background: rgba(255, 255, 255, 0.5);
+    /* Blur_Button_Bg */
+
+    backdrop-filter: blur(5px);
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 2px;
+    @include respond-above(lg) {
+        padding: 8px;
+    }
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    gap: inherit;
+    .triangle {
+        width: 6px;
+        height: 6px;
+        fill: #4d4d4d;
+        stroke: none;
+    }
+    &:first-child {
+        .triangle {
+            display: none;
+        }
+    }
+    &:last-child {
+        .link {
+            background: #ffffff;
+            color: inherit;
+        }
+    }
+}
+
+.link {
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 11px;
+
+    color: #4d4d4d;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 2px;
+    @include respond-above(lg) {
+        padding: 10px;
+        font-size: 16px;
+        line-height: 15px;
+    }
+}

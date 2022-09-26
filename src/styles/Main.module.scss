@@ -1,0 +1,65 @@
+@import '../styles//media_queries';
+.container {
+    padding: 0 16px;
+    &__side {
+        @include respond-above(md) {
+            max-width: 240px;
+            padding: 0;
+            margin: 0 20px;
+        }
+        @include respond-above(md-big) {
+            max-width: 264px;
+        }
+    }
+}
+.topContainer {
+    display: flex;
+    position: relative;
+    z-index: 2;
+    flex-direction: column;
+    gap: 10px;
+    max-height: calc(100vh - 62px - 14px);
+    @include respond-below(md) {
+        overflow: auto;
+    }
+
+    &__fullHeight {
+        height: calc(100vh - 62px);
+        @include respond-above(md) {
+            height: calc(100vh - 74px);
+        }
+        @include respond-above(md-big) {
+            height: calc(100vh - 80px);
+        }
+    }
+    @include respond-above(lg) {
+        gap: 20px;
+        top: -50px;
+    }
+}
+.bottomContainer {
+    position: fixed;
+    bottom: 14px;
+}
+
+.zoomButtons {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateX(-50%);
+    @include respond-below(md) {
+        visibility: hidden;
+    }
+}
+
+.compas {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    @include respond-above(md) {
+        width: 76px;
+        height: 77px;
+    }
+}

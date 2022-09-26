@@ -1,0 +1,48 @@
+.container {
+    height: 100vh;
+    padding-top: 20px;
+    padding-bottom: 14px;
+    display: flex;
+    flex-direction: column;
+}
+
+.top {
+    width: 100%;
+    display: flex;
+}
+
+.bottom {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.closeButton {
+    margin-left: auto;
+    padding: 10px;
+    .closeButtonIcon {
+        width: 30px;
+        height: 30px;
+        stroke: #fff;
+    }
+}
+
+.instructions {
+    padding: 10px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    /* or 122% */
+
+    text-align: center;
+
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.2);
+    /* Blur_Button_Bg */
+
+    border-radius: 7px;
+}
+.actionButton {
+    padding: 16px 0;
+}

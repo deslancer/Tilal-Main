@@ -1,0 +1,29 @@
+.details {
+    padding: 0 15px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 2px;
+    .summary {
+        padding: 10px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        list-style: none;
+        &::-webkit-details-marker {
+            display: none;
+        }
+        &__content {
+            width: 100%;
+        }
+    }
+    &__content {
+        padding-bottom: 10px;
+    }
+}
+.icon {
+    width: 24px;
+    height: 24px;
+    transition: 0.3s;
+    &__active {
+        transform: rotate(180deg);
+    }
+}

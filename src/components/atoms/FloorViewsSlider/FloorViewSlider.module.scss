@@ -1,0 +1,42 @@
+@import '../../../styles/media_queries';
+.item {
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    gap: 12px;
+
+    /* Background/White_90 */
+
+    background: rgba(255, 255, 255, 0.9);
+    /* Blur_Button_Bg */
+
+    backdrop-filter: blur(5px);
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 2px;
+    opacity: var(--opacity);
+    transition: 0.4s;
+    &:first-child {
+        margin-left: 0;
+    }
+
+    &__active {
+        @include respond-above(lg) {
+            background: #11b39b;
+        }
+    }
+}
+.image {
+    width: 80px;
+    @include respond-above(md-big) {
+        width: 100px;
+    }
+}
+.header {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 11px;
+    text-align: center;
+}
