@@ -32,6 +32,59 @@ const MapView: React.FC = () => {
             zoom: 14,
             container: 'map',
             antialias: true
+        });
+        let data;
+        map.on('load', async () => {
+            //Загрузка иконки городка и добавление координат
+            map.loadImage(
+                'images/house.png',
+                (error: Error, image: any) => {
+                    if (error) throw error;
+                    map.addImage('custom-marker', image);
+                });
+
+            map.addSource('points', {
+                'type': 'geojson',
+                'data': {
+                    'type': 'FeatureCollection',
+                    'features': [
+                        {
+                            'type': 'Feature',
+                            'geometry': {
+                                'type': 'Point',
+                                'coordinates': [
+                                    46.6441086, 24.8956462
+                                ]
+                            },
+                            'properties': {
+                                'title': 'Tilal Homes in Narjis'
+                            }
+                        }
+                    ]
+                }
+            });
+
+
+            const response = await fetch(
+                'map_geojson/routes.geojson'
+            );
+            data = await response.json();
+            //Добавление точки городка
+            map.addLayer({
+                'id': 'points',
+                'type': 'symbol',
+                'source': 'points',
+                'layout': {
+                    'icon-image': 'custom-marker',
+                    'text-field': ['get', 'title'],
+                    'text-font': [
+                        'Open Sans Semibold',
+                        'Arial Unicode MS Bold'
+                    ],
+                    'text-offset': [0, 1.25],
+                    'text-anchor': 'top'
+                }
+            });
 
         });
     })

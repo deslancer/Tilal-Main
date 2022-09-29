@@ -10,24 +10,20 @@ type FilterItems = {
 
 const items: FilterItems = [
     {
-        heading: 'Facing',
-        items: ['South', 'South-1', 'South-2', 'South-3'],
+        heading: 'Main Roads',
+        items: ['King Salman Bin Abdulaziz Rd'],
     },
     {
-        heading: 'Availability',
-        items: ['South', 'South-1', 'South-2'],
+        heading: 'Schools and University',
+        items: ['Princess Nourah Bint Abdul Rahman University', 'American International School- AISR'],
     },
     {
-        heading: 'Size of plot',
-        items: ['South', 'South-1'],
+        heading: 'Malls',
+        items: ['Mall Of Saudi Brought to you by Majid Al Futtaim', 'Avenues Mall'],
     },
     {
-        heading: 'Number house',
-        items: ['South', 'South-1'],
-    },
-    {
-        heading: 'Other',
-        items: ['South', 'South-1', 'South-2'],
+        heading: 'Airports',
+        items: ['King Khalid International Airport'],
     },
 ];
 const MapFilter: React.FC<React.ComponentPropsWithoutRef<'details'>> = (
@@ -35,7 +31,7 @@ const MapFilter: React.FC<React.ComponentPropsWithoutRef<'details'>> = (
 ) => {
     return (
         <Details {...props}>
-            <span className={s.summary}>Map Filter</span>
+            <span className={s.summary}>Map Routes</span>
             <ul className={s.list}>
                 {items.map((item) => (
                     <li key={item.heading}>
