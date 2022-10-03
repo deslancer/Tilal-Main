@@ -20,6 +20,7 @@
     border: 1px solid #22366f;
     border-radius: 2px;
     cursor: pointer;
+    flex-shrink: 0;
     &__active::before {
         content: '';
         display: block;
@@ -32,6 +33,6 @@
 .text {
     font-weight: 400;
     font-size: 0.73em;
-    line-height: 0.69em;
+    line-height: 1.19em;
     cursor: pointer;
 }
