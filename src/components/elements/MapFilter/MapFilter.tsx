@@ -55,7 +55,6 @@ const MapFilter = ({ removeRoute, animateRoute, ...props }: any) => {
         newData[index].data.push(item);
         return newData;
     }, []);
-    console.log(dataItems);
     return (
         <Details {...props}>
             <span className={s.summary}>Map Routes</span>
