@@ -1,20 +1,39 @@
-import classNames from 'classnames';
-import React, { useCallback, useState } from 'react';
-import s from './Checkbox.module.scss';
+import classNames from "classnames";
+import React, { useCallback, useEffect, useState } from "react";
+import s from "./Checkbox.module.scss";
 
-interface CheckboxProps extends React.ComponentPropsWithoutRef<'input'> {}
+interface CheckboxProps extends React.ComponentPropsWithoutRef<"input"> {
+    item?: any;
+    animateRoute?: any;
+    removeRoute?: any;
+    setCurrentRoute?: any;
+    active?: any;
+}
+
 const Checkbox: React.FC<CheckboxProps> = ({
     children,
+    item,
+    animateRoute,
+    removeRoute,
+    setCurrentRoute,
+    active,
     className,
     ...otherProps
 }) => {
-    const [active, setActive] = useState<boolean>(false);
-    const onChangeHandler = useCallback(
-        (event: React.ChangeEvent<HTMLInputElement>) => {
-            setActive(event.target.checked);
-        },
-        [setActive]
-    );
+    const onChangeHandler = useCallback(() => {
+        if (active) {
+            removeRoute();
+            setCurrentRoute(null);
+        } else {
+            setCurrentRoute(item.properties.id);
+        }
+    }, [active, item.properties.id, removeRoute, setCurrentRoute]);
+
+    useEffect(() => {
+        if (active) {
+            animateRoute(item);
+        }
+    }, [active, animateRoute, item, removeRoute]);
 
     return (
         <label className={classNames(s.wrapper, className)}>
@@ -25,9 +44,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
                 type="checkbox"
                 {...otherProps}
             />
-            <div
-                className={classNames(s.checkbox, active && s.checkbox__active)}
-            ></div>
+            <div className={classNames(s.checkbox, active && s.checkbox__active)}></div>
             <span className={s.text}>{children}</span>
         </label>
     );
