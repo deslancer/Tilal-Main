@@ -4,10 +4,10 @@ import Checkbox from "../Checkbox";
 import s from "./FilterList.module.scss";
 
 interface FilterListProps extends React.ComponentPropsWithoutRef<"div"> {
-    item: any;
-    animateRoute: any;
-    removeRoute: any;
-    currentRoute: any;
+    item: { heading: string; data: {}[] };
+    animateRoute: void;
+    removeRoute: void;
+    currentRoute: string | null;
     setCurrentRoute: any;
 }
 

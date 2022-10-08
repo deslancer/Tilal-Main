@@ -277,7 +277,6 @@ export default function useMapBox(mapContainerRef: any) {
 
         removeRoute();
         const coordinates = data.geometry.coordinates;
-        console.log(data.geometry.coordinates);
 
         const bounds = new mapboxgl.LngLatBounds(coordinates[0], coordinates[0]);
 
@@ -306,7 +305,6 @@ export default function useMapBox(mapContainerRef: any) {
             },
             housePoint
         );
-        // console.log(coordinates);
 
         var labelCoord = coordinates[Math.round(coordinates.length / 2)];
 
@@ -316,7 +314,6 @@ export default function useMapBox(mapContainerRef: any) {
             if (i < coordinates.length) {
                 data.geometry.coordinates.push(coordinates[i]);
                 map.current.getSource(dataSource).setData(data);
-                // console.log(data.geometry.coordinates);
                 i++;
             } else {
                 window.clearInterval(timer);

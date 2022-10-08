@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Details from "../../atoms/Details";
 import FilterList from "../../atoms/FilterList";
 import s from "./MapFilter.module.scss";
 
 type FilterItems = {
-    properties: { id: string; type: string; name: string };
+    properties: { type: string };
 }[];
 
 // const items: FilterItems = [
@@ -42,19 +42,22 @@ const MapFilter = ({ removeRoute, animateRoute, ...props }: any) => {
         fetchItems();
     }, []);
 
-    const dataItems = items.reduce((acc: any, item) => {
-        const index = acc.findIndex(
-            (el: { heading: string }) => el.heading === item.properties.type
-        );
+    const dataItems = useMemo(() => {
+        return items.reduce((acc: any, item) => {
+            const index = acc.findIndex(
+                (el: { heading: string }) => el.heading === item.properties.type
+            );
 
-        if (index === -1) {
-            return [...acc, { heading: item.properties.type, data: [item] }];
-        }
+            if (index === -1) {
+                return [...acc, { heading: item.properties.type, data: [item] }];
+            }
 
-        const newData = [...acc];
-        newData[index].data.push(item);
-        return newData;
-    }, []);
+            const newData = [...acc];
+            newData[index].data.push(item);
+            return newData;
+        }, []);
+    }, [items]);
+
     return (
         <Details {...props}>
             <span className={s.summary}>Map Routes</span>

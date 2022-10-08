@@ -3,11 +3,11 @@ import React, { useCallback, useEffect, useState } from "react";
 import s from "./Checkbox.module.scss";
 
 interface CheckboxProps extends React.ComponentPropsWithoutRef<"input"> {
-    item?: any;
+    item?: { properties: { id: string } } | undefined;
     animateRoute?: any;
     removeRoute?: any;
     setCurrentRoute?: any;
-    active?: any;
+    active?: boolean;
 }
 
 const Checkbox: React.FC<CheckboxProps> = ({
@@ -25,9 +25,9 @@ const Checkbox: React.FC<CheckboxProps> = ({
             removeRoute();
             setCurrentRoute(null);
         } else {
-            setCurrentRoute(item.properties.id);
+            setCurrentRoute(item?.properties.id);
         }
-    }, [active, item.properties.id, removeRoute, setCurrentRoute]);
+    }, [active, item?.properties.id, removeRoute, setCurrentRoute]);
 
     useEffect(() => {
         if (active) {
