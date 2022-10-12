@@ -32,6 +32,16 @@ export const createScene = async (canvas: HTMLCanvasElement): Promise<BABYLON.Sc
     //////Optimization
     scene.cleanCachedTextureBuffer();
 
+    const defaultPipeline = new BABYLON.DefaultRenderingPipeline("default", true, scene, [camera]);
+    defaultPipeline.imageProcessing.contrast = 1.7;
+    defaultPipeline.imageProcessing.exposure = 1.2;
+    defaultPipeline.imageProcessing.vignetteEnabled = true;
+    defaultPipeline.imageProcessing.vignetteColor = new BABYLON.Color4(1, 1, 1, 0.5);
+    defaultPipeline.imageProcessing.vignetteWeight = 2;
+    defaultPipeline.imageProcessing.vignetteCameraFov = 0.2;
+    // @ts-ignore
+    defaultPipeline.imageProcessing.vignetteBlendMode = BABYLON.ImageProcessingPostProcess.VIGNETTEMODE_OPAQUE;
+
     document.onkeyup = function (e) {
         const evt = window.event || e;
         //console.log(evt.keyCode);

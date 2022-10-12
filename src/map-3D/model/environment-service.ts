@@ -81,5 +81,6 @@ export class EnvironmentService {
 	setToNight(skybox: BABYLON.Mesh, light: BABYLON.HemisphericLight){
 		this.animateSky("material.inclination", this.materialService.dynamicSkyMaterial.inclination, -0.6, skybox);
 		this.animateLight(light.intensity, 0.05, light);
+
 	}
 }

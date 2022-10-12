@@ -211,6 +211,7 @@ export default function useMapBox(mapContainerRef: any) {
                     "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
                     "text-offset": [0, 2.25],
                     "text-anchor": "top",
+                    //"icon-size": 0.25
                 },
             });
 
@@ -273,7 +274,7 @@ export default function useMapBox(mapContainerRef: any) {
     //Прорисовка маршрутов
     function animateRoute(data: any) {
         //Данные для выделения иконки
-        var icon = data.properties.type + "-h";
+        const icon = data.properties.type + "-h";
 
         removeRoute();
         const coordinates = data.geometry.coordinates;
@@ -306,7 +307,7 @@ export default function useMapBox(mapContainerRef: any) {
             housePoint
         );
 
-        var labelCoord = coordinates[Math.round(coordinates.length / 2)];
+        const labelCoord = coordinates[Math.round(coordinates.length / 2)];
 
         let i = 0;
 

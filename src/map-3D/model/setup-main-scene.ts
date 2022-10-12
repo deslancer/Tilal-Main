@@ -24,6 +24,7 @@ export class SetupMainScene {
                 if(ground){
                     const ground2KTexture = new BABYLON.Texture('./assets/models/Road_Web_Cut_2K_Color.jpg', this.scene);
                     const ground4KTexture = new BABYLON.Texture('./assets/models/Road_Web_Cut_4K_Color.jpg', this.scene);
+                    const ground8KTexture = new BABYLON.Texture('./assets/models/Road_Cut_Web_8K_Color.jpg', this.scene);
                     BABYLON.Texture.WhenAllReady([ground2KTexture], () => {
                         //@ts-ignore
                         ground.material.baseTexture = ground2KTexture;
@@ -32,7 +33,14 @@ export class SetupMainScene {
                     BABYLON.Texture.WhenAllReady([ground4KTexture], () => {
                         //@ts-ignore
                         ground.material.baseTexture = ground4KTexture;
+                    })
+                    BABYLON.Texture.WhenAllReady([ground8KTexture], () => {
+                        //@ts-ignore
+                        ground.material.baseTexture = ground8KTexture;
                         ground.material?.freeze();
+                        console.log("8k ground texture loaded successfully")
+                        ground2KTexture.dispose();
+                        ground4KTexture.dispose();
                     })
                 }
 
