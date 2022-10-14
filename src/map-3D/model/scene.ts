@@ -37,8 +37,8 @@ export const createScene = async (canvas: HTMLCanvasElement): Promise<BABYLON.Sc
     defaultPipeline.imageProcessing.exposure = 1.2;
     defaultPipeline.imageProcessing.vignetteEnabled = true;
     defaultPipeline.imageProcessing.vignetteColor = new BABYLON.Color4(1, 1, 1, 0.5);
-    defaultPipeline.imageProcessing.vignetteWeight = 2;
-    defaultPipeline.imageProcessing.vignetteCameraFov = 0.2;
+    defaultPipeline.imageProcessing.vignetteWeight = 1.5;
+    defaultPipeline.imageProcessing.vignetteCameraFov = 0.18;
     // @ts-ignore
     defaultPipeline.imageProcessing.vignetteBlendMode = BABYLON.ImageProcessingPostProcess.VIGNETTEMODE_OPAQUE;
     defaultPipeline.imageProcessing.toneMappingEnabled = true;
