@@ -159,7 +159,7 @@ export default function useMapBox(mapContainerRef: any) {
                 if (error) throw error;
                 map.current.addImage("customCar", image);
             });
-            map.current.addSource("point", {
+            /*map.current.addSource("point", {
                 type: "geojson",
                 data: {
                     type: "FeatureCollection",
@@ -176,7 +176,24 @@ export default function useMapBox(mapContainerRef: any) {
                         },
                     ],
                 },
-            });
+            });*/
+            var point = {
+                'type': 'FeatureCollection',
+                'features': [
+                    {
+                        'type': 'Feature',
+                        'geometry': {
+                            'type': 'Point',
+                            'coordinates': [
+                                46.6441086, 24.8956462
+                            ]
+                        },
+                        'properties': {
+                            'title': 'Tilal Homes in Narjis'
+                        }
+                    }
+                ]
+            };
 
             map.current.addSource("points", {
                 type: "geojson",
@@ -184,37 +201,31 @@ export default function useMapBox(mapContainerRef: any) {
             });
 
             //Добавление точки городка
-
             map.current.addLayer({
-                id: "points",
-                type: "symbol",
-                source: "points",
-                layout: {
-                    "icon-allow-overlap": true,
-                    "text-allow-overlap": false,
-                    "icon-image": ["get", "type"],
-                    "text-field": ["get", "title"],
-                    "text-font": ["Open Sans Regular", "Arial Unicode MS Bold"],
-                    "text-offset": [0, 1.25],
-                    "text-anchor": "top",
-                },
+                'id': 'points',
+                'type': 'symbol',
+                'source': 'points',
+                'layout': {
+                    'icon-allow-overlap': true,
+                    'text-allow-overlap': false,
+                    'icon-image': ['get', 'type'],
+                    'text-field': ['get', 'title'],
+                    'text-font': [
+                        'Open Sans Regular',
+                        'Arial Unicode MS Bold'
+                    ],
+                    'text-offset': [0, 1.25],
+                    'text-anchor': 'top'
+                }
             });
-            map.current.addLayer({
-                id: "point",
-                type: "symbol",
-                source: "point",
-                layout: {
-                    "icon-image": "custom-marker",
-                    "icon-allow-overlap": true,
-                    "text-allow-overlap": false,
-                    "text-field": ["get", "title"],
-                    "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
-                    "text-offset": [0, 2.25],
-                    "text-anchor": "top",
-                    //"icon-size": 0.25
-                },
-            });
+            for (const feature of point.features) {
+                // create a HTML element for each feature
+                const el = document.createElement('div');
+                el.className = 'marker';
 
+                // make a marker for each feature and add to the map
+                new mapboxgl.Marker(el).setLngLat(feature.geometry.coordinates).addTo(map.current);
+            }
             map.current.fitBounds(bbox, { padding: 30 });
         });
 
@@ -293,18 +304,16 @@ export default function useMapBox(mapContainerRef: any) {
 
         const dataSource = "trace";
         map.current.addSource(dataSource, { type: "geojson", data: data });
-        map.current.addLayer(
-            {
-                id: "route",
-                type: "line",
-                source: dataSource,
-                paint: {
-                    "line-color": "#954098",
-                    "line-opacity": 0.75,
-                    "line-width": 5,
-                },
-            },
-            housePoint
+        map.current.addLayer({
+                'id': 'route',
+                'type': 'line',
+                'source': dataSource,
+                'paint': {
+                    'line-color': '#954098',
+                    'line-opacity': 0.75,
+                    'line-width': 5
+                }
+            }
         );
 
         const labelCoord = coordinates[Math.round(coordinates.length / 2)];

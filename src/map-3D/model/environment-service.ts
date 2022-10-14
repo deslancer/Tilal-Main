@@ -28,9 +28,7 @@ export class EnvironmentService {
 	createSkyBox() {
 		let skybox = BABYLON.Mesh.CreateBox("BackgroundSkybox", 30000, this.scene, undefined, BABYLON.Mesh.BACKSIDE);
 		skybox.material = this.materialService.dynamicSkyMaterial;
-		/*this.scene.registerAfterRender(() => {
-			skybox.rotate(BABYLON.Axis.Y, +0.00015, BABYLON.Space.LOCAL);
-		})*/
+
 		const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), this.scene);
 
 

@@ -37,16 +37,4 @@ export class LoaderService implements ILoaderService{
         this.addEnvTextureTask();
         this.assetsManager.load();
     }
-
-
-
-    /*  loadModel(scene) {
-         let meshes;
-         BABYLON.SceneLoader.ImportMeshAsync("", "/assets/models/", 'GenPlan_Web_with_mats.babylon', scene).then((result) => {
-             meshes = result.meshes[0];
-             meshes.forEach((mesh)=>{
-                 mesh.isPickable = false;
-             })
-         });
-     }*/
 }

@@ -17,31 +17,33 @@ export class SetupMainScene {
                 meshes.forEach((mesh: BABYLON.Mesh) => {
                     mesh.freezeWorldMatrix();
                     mesh.doNotSyncBoundingInfo = true;
-                    mesh.isPickable = false;
-
+                    mesh.isPickable = true;
+                    console.log(mesh.name)
                 })
                 const ground = this.scene.getMeshByName('Road_Plane_1400m_Web');
                 if(ground){
+
                     const ground2KTexture = new BABYLON.Texture('./assets/models/Road_Web_Cut_2K_Color.jpg', this.scene);
-                    const ground4KTexture = new BABYLON.Texture('./assets/models/Road_Web_Cut_4K_Color.jpg', this.scene);
-                    const ground8KTexture = new BABYLON.Texture('./assets/models/Road_Cut_Web_8K_Color.jpg', this.scene);
                     BABYLON.Texture.WhenAllReady([ground2KTexture], () => {
                         //@ts-ignore
                         ground.material.baseTexture = ground2KTexture;
+                        const ground4KTexture = new BABYLON.Texture('./assets/models/Road_Web_Cut_4K_Color.jpg', this.scene);
+                        BABYLON.Texture.WhenAllReady([ground4KTexture], () => {
+                            //@ts-ignore
+                            ground.material.baseTexture = ground4KTexture;
+                            const ground8KTexture = new BABYLON.Texture('./assets/models/Road_Cut_Web_8K_Color.jpg', this.scene);
+                            BABYLON.Texture.WhenAllReady([ground8KTexture], () => {
+                                //@ts-ignore
+                                ground.material.baseTexture = ground8KTexture;
+                                ground.material?.freeze();
+                                console.log("8k ground texture loaded successfully")
+                                ground2KTexture.dispose();
+                                ground4KTexture.dispose();
+                            })
+                        })
+                    })
 
-                    })
-                    BABYLON.Texture.WhenAllReady([ground4KTexture], () => {
-                        //@ts-ignore
-                        ground.material.baseTexture = ground4KTexture;
-                    })
-                    BABYLON.Texture.WhenAllReady([ground8KTexture], () => {
-                        //@ts-ignore
-                        ground.material.baseTexture = ground8KTexture;
-                        ground.material?.freeze();
-                        console.log("8k ground texture loaded successfully")
-                        ground2KTexture.dispose();
-                        ground4KTexture.dispose();
-                    })
+
                 }
 
 

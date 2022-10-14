@@ -23,7 +23,7 @@ export const createScene = async (canvas: HTMLCanvasElement): Promise<BABYLON.Sc
     materialService.createBackgroundMaterial();
     materialService.createDynamicSky();
     envService.createSkyBox();
-   // envService.createHDREnvironment();
+    envService.createHDREnvironment();
 
     setupMainScene.setGroundTexture();
     const mb = new BABYLON.MotionBlurPostProcess('mb', scene, 1.0, camera);
@@ -41,6 +41,23 @@ export const createScene = async (canvas: HTMLCanvasElement): Promise<BABYLON.Sc
     defaultPipeline.imageProcessing.vignetteCameraFov = 0.2;
     // @ts-ignore
     defaultPipeline.imageProcessing.vignetteBlendMode = BABYLON.ImageProcessingPostProcess.VIGNETTEMODE_OPAQUE;
+    defaultPipeline.imageProcessing.toneMappingEnabled = true;
+    // @ts-ignore
+    defaultPipeline.imageProcessing.toneMappingType = BABYLON.ImageProcessingPostProcess.TONEMAPPING_ACES;
+
+
+
+
+
+
+    scene.onPointerDown = () =>{
+        const pickResult = scene.pick(scene.pointerX, scene.pointerY);
+
+        if (pickResult && pickResult.hit) {
+            //@ts-ignore
+            console.log(pickResult.pickedMesh.name)
+        }
+    }
 
     document.onkeyup = function (e) {
         const evt = window.event || e;
