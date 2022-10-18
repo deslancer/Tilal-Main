@@ -9,17 +9,22 @@ export class SetupMainScene {
         this.scene = scene;
     }
 
-    setGroundTexture() {
+    setupMeshes() {
         const mainTask = this.loaderService.getMainSceneTask()
+        let actionManager = new BABYLON.ActionManager(this.scene);
         if (mainTask){
             mainTask.onSuccess = (task) => {
                 let meshes = task.loadedMeshes;
+
                 meshes.forEach((mesh: BABYLON.Mesh) => {
                     mesh.freezeWorldMatrix();
                     mesh.doNotSyncBoundingInfo = true;
-                    mesh.isPickable = true;
-                    console.log(mesh.name)
+                    if(mesh.name.includes('Type_')){
+                        mesh.instances.map(m => m.actionManager = actionManager)
+                    }
+
                 })
+
                 const ground = this.scene.getMeshByName('Road_Plane_1400m_Web');
                 if(ground){
 
@@ -46,9 +51,26 @@ export class SetupMainScene {
 
                 }
 
-
+                actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger, function(ev){
+                    const meshUnder = ev.meshUnderPointer;
+                    if (meshUnder) {
+                        meshUnder.scaling.x = 1.1;
+                        meshUnder.scaling.y = 1.1;
+                        meshUnder.scaling.z = 1.1;
+                    }
+                }));
+                //if hover is over remove highlight of the mesh
+                actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger, function(ev){
+                    const meshUnder = ev.meshUnderPointer;
+                    if (meshUnder) {
+                        meshUnder.scaling.x = 1;
+                        meshUnder.scaling.y = 1;
+                        meshUnder.scaling.z = 1;
+                    }
+                }));
             }
         }
 
     }
+
 }

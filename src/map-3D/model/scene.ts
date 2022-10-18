@@ -25,7 +25,7 @@ export const createScene = async (canvas: HTMLCanvasElement): Promise<BABYLON.Sc
     envService.createSkyBox();
     envService.createHDREnvironment();
 
-    setupMainScene.setGroundTexture();
+    setupMainScene.setupMeshes();
     const mb = new BABYLON.MotionBlurPostProcess('mb', scene, 1.0, camera);
     mb.motionStrength = 0.5;
     mb.isObjectBased = true;
@@ -55,7 +55,12 @@ export const createScene = async (canvas: HTMLCanvasElement): Promise<BABYLON.Sc
 
         if (pickResult && pickResult.hit) {
             //@ts-ignore
-            console.log(pickResult.pickedMesh.name)
+            if(pickResult.pickedMesh.name.includes("Type_")){
+                window.location.assign('https://3dtour.ua/files/3dcofigurator/tilal-ar/?file=type_a');
+                //@ts-ignore
+                console.log(pickResult.pickedMesh.name)
+            }
+
         }
     }
 
