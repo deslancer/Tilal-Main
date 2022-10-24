@@ -2,7 +2,13 @@
 .planContainer {
     margin-top: 20px;
 }
-
+.canvas-ar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
 .pageMenuWrapper {
     @include respond-above(md) {
         max-width: 300px;

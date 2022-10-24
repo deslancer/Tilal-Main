@@ -7,28 +7,6 @@ type FilterItems = {
     properties: { type: string };
 }[];
 
-// const items: FilterItems = [
-//     {
-//         heading: "Main Roads",
-//         items: ["King Salman Bin Abdulaziz Rd"],
-//     },
-//     {
-//         heading: "Schools and University",
-//         items: [
-//             "Princess Nourah Bint Abdul Rahman University",
-//             "American International School- AISR",
-//         ],
-//     },
-//     {
-//         heading: "Malls",
-//         items: ["Mall Of Saudi Brought to you by Majid Al Futtaim", "Avenues Mall"],
-//     },
-//     {
-//         heading: "Airports",
-//         items: ["King Khalid International Airport"],
-//     },
-// ];
-
 const MapFilter = ({ removeRoute, animateRoute, ...props }: any) => {
     const [items, setItems] = useState<FilterItems>([]);
     const [currentRoute, setCurrentRoute] = React.useState<string | null>(null);

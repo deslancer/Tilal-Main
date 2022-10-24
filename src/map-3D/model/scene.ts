@@ -55,10 +55,11 @@ export const createScene = async (canvas: HTMLCanvasElement): Promise<BABYLON.Sc
 
         if (pickResult && pickResult.hit) {
             //@ts-ignore
-            if(pickResult.pickedMesh.name.includes("Type_")){
-                window.location.assign('https://3dtour.ua/files/3dcofigurator/tilal-ar/?file=type_a');
-                //@ts-ignore
-                console.log(pickResult.pickedMesh.name)
+            const name = pickResult.pickedMesh.name.substring(0, 6).toLowerCase();
+
+            //@ts-ignore
+           if(pickResult.pickedMesh.name.includes("Type_")){
+                window.location.assign(`/flat?file=${name}`);
             }
 
         }

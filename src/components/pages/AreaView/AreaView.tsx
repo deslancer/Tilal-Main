@@ -2,7 +2,7 @@ import React, {useEffect, useRef} from 'react';
 import Container from '../../atoms/Container';
 import NavigationBreadcrumbs from '../../atoms/NavigationBreadcrumbs';
 import TypesMenu from '../../atoms/TypesMenu';
-import MapFilter from '../../elements/MapFilter';
+import Map3DFilter from '../../elements/Map3DFilter';
 import sMain from '../../../styles/Main.module.scss';
 import Layout from '../../elements/Layout';
 import classNames from 'classnames';
@@ -33,7 +33,7 @@ const AreaView: React.FC = () => {
                 )}
             >
                 <NavigationBreadcrumbs className={s.breadcrumbs} />
-                <MapFilter className={s.filter} />
+                <Map3DFilter className={s.filter} />
                 <TypesMenu className={s.typesMenu} />
             </Container>
             <ZoomButtons className={classNames(sMain.zoomButtons)} />

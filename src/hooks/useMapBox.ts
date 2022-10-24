@@ -159,25 +159,8 @@ export default function useMapBox(mapContainerRef: any) {
                 if (error) throw error;
                 map.current.addImage("customCar", image);
             });
-            /*map.current.addSource("point", {
-                type: "geojson",
-                data: {
-                    type: "FeatureCollection",
-                    features: [
-                        {
-                            type: "Feature",
-                            geometry: {
-                                type: "Point",
-                                coordinates: [46.6441086, 24.8956462],
-                            },
-                            properties: {
-                                title: "Tilal Homes in Narjis",
-                            },
-                        },
-                    ],
-                },
-            });*/
-            var point = {
+
+            const point = {
                 'type': 'FeatureCollection',
                 'features': [
                     {
@@ -218,11 +201,14 @@ export default function useMapBox(mapContainerRef: any) {
                     'text-anchor': 'top'
                 }
             });
+
             for (const feature of point.features) {
                 // create a HTML element for each feature
                 const el = document.createElement('div');
                 el.className = 'marker';
-
+                el.addEventListener('click', ()=>{
+                    window.location.assign(`/area`);
+                })
                 // make a marker for each feature and add to the map
                 new mapboxgl.Marker(el).setLngLat(feature.geometry.coordinates).addTo(map.current);
             }

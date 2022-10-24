@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import ApartmentsDetails from '../../atoms/ApartmentsDetails';
 import Container from '../../atoms/Container';
 import FloatingGallery from '../../atoms/FloatingGallery';
@@ -12,6 +12,8 @@ import classNames from 'classnames';
 import ZoomButtons from '../../atoms/ZoomButtons';
 import Compas from '../../atoms/Compas';
 import Canvas from '../../atoms/Canvas';
+import {createARScene} from "../../../AR-mode/scene";
+
 const floatingGalleryOptions = {
     header: 'Plan',
     pictures: [
@@ -189,6 +191,16 @@ const FlatView: React.FC = () => {
     const register = (registration: RegistrationObject) => {
         detailsControl.current = registration;
     };
+    const shouldSetup = useRef(true);
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+    useEffect(() => {
+        // Fix for React 18 strict mode, when useEffect called twice without cleanup function
+        if (shouldSetup.current) {
+            shouldSetup.current = false;
+            const canvas = canvasRef.current;
+            canvas && createARScene(canvas)
+        }
+    }, []);
     return (
         <Layout>
             <Container
@@ -226,7 +238,11 @@ const FlatView: React.FC = () => {
             )}
             <ZoomButtons className={classNames(sMain.zoomButtons)} />
             <Compas className={classNames(sMain.compas)} />
-            <Canvas />
+            <canvas
+                ref={canvasRef}
+                id="ar-canvas"
+                className={s['canvas-ar']}
+            ></canvas>
         </Layout>
     );
 };
