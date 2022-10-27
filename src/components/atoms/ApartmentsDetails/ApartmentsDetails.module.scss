@@ -109,4 +109,13 @@
         stroke: #fff;
         fill: #fff;
     }
+    a {
+        display: flex;
+        text-decoration: none;
+        color: white;
+    }
+    span {
+        margin-left: 0.5rem;
+        margin-top: 0.25rem;
+    }
 }

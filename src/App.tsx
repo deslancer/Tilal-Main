@@ -15,6 +15,7 @@ import {
     Link,
     useParams,
 } from 'react-router-dom';
+import VTourView from "./components/pages/VTourView";
 
 function App() {
     const { isOpened, modalType, open } = useModal();
@@ -32,6 +33,7 @@ function App() {
                         <Route element={<AreaView />} path="/area" />
                         <Route element={<FlatView />} path="/flat" />
                         <Route element={<ARPage />} path="/flat/ar" />
+                        <Route element={<VTourView />} path="/vtour" />
                     </Routes>
                 </Router>
                 <SvgSprite />

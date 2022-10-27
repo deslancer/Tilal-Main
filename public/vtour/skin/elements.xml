@@ -1,0 +1,35 @@
+﻿<krpano>
+
+	<skin_settings thumbs_opened="true" design_bgalpha="0" />
+
+<action name="fill_elements" scope="global" type="Javascript"><![CDATA[
+		var div_floor_changer = document.createElement("div");
+		div_floor_changer.id = "floor_changer";
+		
+		var div_floors = document.createElement("div");
+		div_floors.id = "floors";
+		var div_plan_place = document.createElement("div");
+		div_plan_place.id = "plan_place";
+		
+		var div_floor;
+		
+		for (i=1; i <=4; i++) {
+			div_floor = document.createElement("div");
+			div_floor.classList.add('floor');
+			div_floor.setAttribute("data-floor", i);
+			div_floor.innerHTML = i;
+			div_floors.appendChild(div_floor);
+		}
+		div_floor_changer.appendChild(div_floors);
+		div_floor_changer.appendChild(div_plan_place);
+
+		caller.sprite.appendChild(div_floor_changer);
+
+		prepareFloorChanger();
+		
+	]]>
+</action>
+<!--
+<data content='<div id="floor_changer">sdfsfsfsfs</div>' />
+-->
+</krpano>

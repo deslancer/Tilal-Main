@@ -112,8 +112,10 @@ const ApartmentsDetails: React.FC<{
                         </FormButton>
                     )}
                     <FormButton mode="active" className={s.button}>
-                        <SvgIcon className={s.button__icon} icon="360" />
-                        Virtual Tour
+                        <a href="/vtour">
+                            <SvgIcon className={s.button__icon} icon="360" />
+                            <span>Virtual Tour</span>
+                        </a>
                     </FormButton>
                     <FormButton
                         data-action="plans"
