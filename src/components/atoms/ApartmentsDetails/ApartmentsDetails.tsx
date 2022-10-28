@@ -112,7 +112,7 @@ const ApartmentsDetails: React.FC<{
                         </FormButton>
                     )}
                     <FormButton mode="active" className={s.button}>
-                        <a href="/vrtour">
+                        <a href="/vtour">
                             <SvgIcon className={s.button__icon} icon="360" />
                             <span>Virtual Tour</span>
                         </a>
