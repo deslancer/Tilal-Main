@@ -206,6 +206,7 @@ export default function useMapBox(mapContainerRef: any) {
                 // create a HTML element for each feature
                 const el = document.createElement('div');
                 el.className = 'marker';
+                el.style.cursor = 'pointer';
                 el.addEventListener('click', ()=>{
                     window.location.assign(`/area`);
                 })
