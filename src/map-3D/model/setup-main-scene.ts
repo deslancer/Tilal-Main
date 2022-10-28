@@ -1,4 +1,5 @@
 import {ILoaderService} from "../interfaces/ILoaderService";
+import {useAppStore} from "../../store/store";
 
 export class SetupMainScene {
     private loaderService: ILoaderService;
@@ -36,6 +37,9 @@ export class SetupMainScene {
                         BABYLON.Texture.WhenAllReady([ground4KTexture], () => {
                             //@ts-ignore
                             ground.material.baseTexture = ground4KTexture;
+                            useAppStore.setState({
+                                loading: false
+                            })
                           /*  const ground8KTexture = new BABYLON.Texture('./assets/models/Road_Cut_Web_8K_Color.jpg', this.scene);
                             BABYLON.Texture.WhenAllReady([ground8KTexture], () => {
                                 //@ts-ignore

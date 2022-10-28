@@ -5,9 +5,12 @@ import {CameraService} from "./camera-service";
 import {EnvironmentService} from "./environment-service";
 import {MaterialsService} from "./materials-service";
 import {SetupMainScene} from "./setup-main-scene";
-
+import {useAppStore} from "../../store/store";
 
 export const createScene = async (canvas: HTMLCanvasElement): Promise<BABYLON.Scene> => {
+    useAppStore.setState({
+        loading: true
+    })
     const engine = new EngineService(canvas).getEngine();
     const scene = new BABYLON.Scene(engine);
     const cameraService = new CameraService(canvas, scene);
@@ -124,10 +127,11 @@ export const createScene = async (canvas: HTMLCanvasElement): Promise<BABYLON.Sc
             }
         }
     };
-    engine.runRenderLoop(() => {
-        //document.querySelector('.fps').innerHTML = engine.getFps().toFixed() + " fps";
-        scene.render();
-    });
+    loaderService.assetsManager.onFinish = function(tasks) {
+        engine.runRenderLoop(function() {
+            scene.render();
+        });
+    };
 
     window.addEventListener('resize', () => {
         engine.resize();

@@ -1,5 +1,6 @@
 import * as BABYLON from 'babylonjs';
 import 'babylonjs-loaders';
+import {useAppStore} from "../../store/store";
 
 export class LoaderService {
     loadModel(scene: BABYLON.Scene) {
@@ -39,7 +40,9 @@ export class LoaderService {
                 })
             }
 
-
+            useAppStore.setState({
+                loading: false
+            })
         });
 
     }

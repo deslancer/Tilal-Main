@@ -11,9 +11,9 @@ export class CameraService {
 
 	createPerspectiveCam() {
 		const camera = new BABYLON.ArcRotateCamera( "camera",
-			-Math.PI / 1.8,
-			Math.PI / 2.5,
-			300,
+			3.683,
+			1.078,
+			254,
 			new BABYLON.Vector3( 0, 0, 0 ),
 			this.scene );
 		camera.attachControl( this.canvas, true );

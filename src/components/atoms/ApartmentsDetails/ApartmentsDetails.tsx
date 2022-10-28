@@ -92,7 +92,7 @@ const ApartmentsDetails: React.FC<{
                 <div onClick={handleButtonClick} className={s.buttons}>
                     <FormButton
                         data-action="3d"
-                        mode="active"
+                        mode="main"
                         className={s.button}
                     >
                         <SvgIcon className={s.button__icon} icon="interior" />
@@ -112,7 +112,7 @@ const ApartmentsDetails: React.FC<{
                         </FormButton>
                     )}
                     <FormButton mode="active" className={s.button}>
-                        <a href="/vtour">
+                        <a href="/vrtour">
                             <SvgIcon className={s.button__icon} icon="360" />
                             <span>Virtual Tour</span>
                         </a>
@@ -127,7 +127,7 @@ const ApartmentsDetails: React.FC<{
                     </FormButton>
                     <FormButton
                         onClick={() => open('registerInterset')}
-                        mode="main"
+                        mode="active"
                         className={s.button}
                     >
                         Register My Interest

@@ -10,10 +10,24 @@ import s from './AreaView.module.scss';
 import ZoomButtons from '../../atoms/ZoomButtons';
 import Compas from '../../atoms/Compas';
 import {createScene} from "../../../map-3D/model/scene";
+import {useModal} from "../../../hooks/useModal";
+import {useAppStore} from "../../../store/store";
+
 
 const AreaView: React.FC = () => {
     const shouldSetup = useRef(true);
     const canvasRef = useRef<HTMLCanvasElement>(null);
+    const { loading } = useAppStore();
+    const { open, close, setModalProps } = useModal();
+    useEffect(()=>{
+        if (loading){
+            open("loading", { initialProps: { progress: 0 } });
+        }else {
+            setModalProps({ progress: 100 });
+            close();
+        }
+    },[loading])
+
     useEffect(() => {
         // Fix for React 18 strict mode, when useEffect called twice without cleanup function
         if (shouldSetup.current) {

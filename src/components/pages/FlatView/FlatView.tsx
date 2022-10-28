@@ -13,6 +13,8 @@ import ZoomButtons from '../../atoms/ZoomButtons';
 import Compas from '../../atoms/Compas';
 import Canvas from '../../atoms/Canvas';
 import {createARScene} from "../../../AR-mode/scene";
+import {useAppStore} from "../../../store/store";
+import {useModal} from "../../../hooks/useModal";
 
 const floatingGalleryOptions = {
     header: 'Plan',
@@ -191,6 +193,16 @@ const FlatView: React.FC = () => {
     const register = (registration: RegistrationObject) => {
         detailsControl.current = registration;
     };
+    const { loading } = useAppStore();
+    const { open, close, setModalProps } = useModal();
+    useEffect(()=>{
+        if (loading){
+            open("loading", { initialProps: { progress: 0 } });
+        }else {
+            setModalProps({ progress: 100 });
+            close();
+        }
+    },[loading])
     const shouldSetup = useRef(true);
     const canvasRef = useRef<HTMLCanvasElement>(null);
     useEffect(() => {

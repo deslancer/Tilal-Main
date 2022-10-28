@@ -11,6 +11,7 @@ export class LoaderService implements ILoaderService{
 
     constructor(scene: BABYLON.Scene) {
         this.assetsManager = new BABYLON.AssetsManager(scene);
+        this.assetsManager.useDefaultLoadingScreen = false;
     }
 
     addMainSceneTask() {

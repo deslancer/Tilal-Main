@@ -1,4 +1,4 @@
-﻿<krpano version="1.20.7" onstart="jscall(reactKrpano.onStart())" title="3DTour">
+﻿<krpano version="1.20.7"  title="3DTour">
 
 	<include url="skin/vtourskin.xml" />
 
