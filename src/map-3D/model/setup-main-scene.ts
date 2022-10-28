@@ -34,9 +34,13 @@ export class SetupMainScene {
                         //@ts-ignore
                         ground.material.baseTexture = ground2KTexture;
                         const ground4KTexture = new BABYLON.Texture('./assets/models/Road_Web_Cut_4K_Color.jpg', this.scene);
+                        const opacityTexture = new BABYLON.Texture('./assets/models/Road_Cut_Web_8K_Opacity.jpg', this.scene);
                         BABYLON.Texture.WhenAllReady([ground4KTexture], () => {
                             //@ts-ignore
                             ground.material.baseTexture = ground4KTexture;
+                            //@ts-ignore
+                            ground.material.opacityTexture = opacityTexture;
+
                             useAppStore.setState({
                                 loading: false
                             })

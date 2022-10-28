@@ -30,7 +30,7 @@ export const createScene = async (canvas: HTMLCanvasElement): Promise<BABYLON.Sc
 
     setupMainScene.setupMeshes();
     const mb = new BABYLON.MotionBlurPostProcess('mb', scene, 1.0, camera);
-    mb.motionStrength = 0.5;
+    mb.motionStrength = 0.15;
     mb.isObjectBased = true;
     //////Optimization
     scene.cleanCachedTextureBuffer();
