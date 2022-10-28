@@ -33,13 +33,19 @@ export class SetupMainScene {
                     BABYLON.Texture.WhenAllReady([ground2KTexture], () => {
                         //@ts-ignore
                         ground.material.baseTexture = ground2KTexture;
-                        const ground4KTexture = new BABYLON.Texture('./assets/models/Road_Web_Cut_4K_Color.jpg', this.scene);
-                        const opacityTexture = new BABYLON.Texture('./assets/models/Road_Cut_Web_8K_Opacity.jpg', this.scene);
-                        BABYLON.Texture.WhenAllReady([ground4KTexture], () => {
+                        //const ground4KTexture = new BABYLON.Texture('./assets/models/Road_Web_Cut_4K_Color.jpg', this.scene);
+                        const opacityTexture = new BABYLON.Texture('./assets/models/Road_Cut_Web_with_opacity.png', this.scene);
+                        BABYLON.Texture.WhenAllReady([opacityTexture], () => {
                             //@ts-ignore
-                            ground.material.baseTexture = ground4KTexture;
+                            ground.material.baseTexture = opacityTexture;
                             //@ts-ignore
-                            ground.material.opacityTexture = opacityTexture;
+                            ground.material.baseTexture.hasAlpha = true;
+                            //@ts-ignore
+                            ground.material.useAlphaFromBaseTexture = true;
+                            //@ts-ignore
+                            ground.material.alphaCutOff = 0.4;
+                            //@ts-ignore
+                            ground.material.transparencyMode = 2;
 
                             useAppStore.setState({
                                 loading: false
