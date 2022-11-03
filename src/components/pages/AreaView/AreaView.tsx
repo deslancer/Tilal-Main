@@ -18,19 +18,21 @@ import useTimeout from "../../../hooks/useTimeout";
 const AreaView: React.FC = () => {
     const shouldSetup = useRef(true);
     const canvasRef = useRef<HTMLCanvasElement>(null);
-    const { loading } = useAppStore();
+    const { loading, progress } = useAppStore();
     const { open, close, setModalProps } = useModal();
     useEffect(()=>{
         if (loading){
             open("loading", { initialProps: { progress: 0 } });
-
         }else {
             close();
         }
+        console.log(progress)
     },[loading])
-    useTimeout(() => {
-        setModalProps({ progress: 100 });
-    }, 1000);
+    useEffect(()=>{
+        setModalProps({ progress: progress });
+
+    },[progress])
+
 
     useEffect(() => {
         // Fix for React 18 strict mode, when useEffect called twice without cleanup function

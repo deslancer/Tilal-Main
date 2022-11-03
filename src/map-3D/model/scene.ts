@@ -132,7 +132,12 @@ export const createScene = async (canvas: HTMLCanvasElement): Promise<BABYLON.Sc
             scene.render();
         });
     };
-
+    loaderService.assetsManager.onProgress = function(remainingCount, totalCount, lastFinishedTask) {
+        const percent = Math.abs((remainingCount - totalCount / totalCount ) * 100)
+        useAppStore.setState({
+            progress: percent
+        })
+    };
     window.addEventListener('resize', () => {
         engine.resize();
     });
