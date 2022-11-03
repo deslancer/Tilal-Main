@@ -11,7 +11,8 @@
 
     backdrop-filter: blur(5px);
     /* Note: backdrop-filter has minimal browser support */
-
+    position: fixed;
+    bottom: 1rem;
     border-radius: 2px;
 }
 

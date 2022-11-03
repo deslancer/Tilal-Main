@@ -1,11 +1,12 @@
 @import '../../../styles/media_queries';
 .header {
+    position: relative;
     padding: 0 16px;
     height: 62px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    z-index: 2;
+    z-index: 5;
     background: linear-gradient(
         180deg,
         rgba(0, 0, 0, 0.6) 0%,
