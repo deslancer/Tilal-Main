@@ -40,7 +40,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({
             <Logo className={s.logo} direction="column" />
             <div className={s.loader}>
                 <span className={s.loaderText}>Loading...</span>
-               {/* <ProgressBar className={s.progressLoader} progress={progress} />*/}
+               <ProgressBar className={s.progressLoader} progress={progress} />
             </div>
         </Container>
     );

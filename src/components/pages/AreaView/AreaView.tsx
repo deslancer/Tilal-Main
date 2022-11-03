@@ -12,6 +12,7 @@ import Compas from '../../atoms/Compas';
 import {createScene} from "../../../map-3D/model/scene";
 import {useModal} from "../../../hooks/useModal";
 import {useAppStore} from "../../../store/store";
+import useTimeout from "../../../hooks/useTimeout";
 
 
 const AreaView: React.FC = () => {
@@ -22,11 +23,14 @@ const AreaView: React.FC = () => {
     useEffect(()=>{
         if (loading){
             open("loading", { initialProps: { progress: 0 } });
+
         }else {
-            setModalProps({ progress: 100 });
             close();
         }
     },[loading])
+    useTimeout(() => {
+        setModalProps({ progress: 100 });
+    }, 1000);
 
     useEffect(() => {
         // Fix for React 18 strict mode, when useEffect called twice without cleanup function
