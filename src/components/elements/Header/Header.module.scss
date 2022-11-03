@@ -6,7 +6,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    z-index: 5;
+    z-index: 2;
     background: linear-gradient(
         180deg,
         rgba(0, 0, 0, 0.6) 0%,
@@ -16,6 +16,7 @@
     );
     @include respond-below(md) {
         &__opened {
+            z-index: 5;
             background: #ffffff;
         }
     }
