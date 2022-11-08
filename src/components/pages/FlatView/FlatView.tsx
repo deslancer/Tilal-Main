@@ -175,6 +175,7 @@ const houseFloors = [
     },
 ];
 const FlatView: React.FC = () => {
+    const { selectedHouse, housesData } = useAppStore();
     const [showedElement, showedElementPlans] = useState<string | null>(null);
     const detailsControl = useRef<RegistrationObject | null>(null);
     const hidePlans = useCallback(() => {
@@ -211,6 +212,7 @@ const FlatView: React.FC = () => {
             shouldSetup.current = false;
             const canvas = canvasRef.current;
             canvas && createARScene(canvas)
+
         }
     }, []);
     return (

@@ -8,6 +8,7 @@ import s from './ApartmentsDetails.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { useModal } from '../../../hooks/useModal';
 import useWindowSize from '../../../hooks/useWindowSize';
+import {useAppStore} from "../../../store/store";
 interface Size {
     value: React.ReactNode;
     description: React.ReactNode;
@@ -58,35 +59,72 @@ const ApartmentsDetails: React.FC<{
     const navigate = useNavigate();
     const { open } = useModal();
     const { width } = useWindowSize();
+    const { selectedHouse, housesData } = useAppStore();
+    let houseData: any = {};
+    housesData.map((obj: any)=> {
+        if(selectedHouse == obj['  / Land Number']){
+            houseData = obj;
+        }
+    } )
     return (
         <Details onOpen={onOpen} register={register}>
             <div className={s.summary}>
-                <span className={s.status}>East</span>
-                <span className={s.title}>№205 (Zero Lot)</span>
+                <span className={s.status}>{houseData['Unit front compass /  ']}</span>
+                <span className={s.title}>№{selectedHouse} {houseData[' / Model'].substring(1,houseData[' / Model'].length)}</span>
             </div>
             <div className={s.details}>
                 <div className={s.mainInfo}>
                     <AvailabilityLabel
                         className={s.statusLabel}
-                        availability="available"
+                        availability={houseData['Availability']}
                     >
-                        Type B
+                        Type {houseData[' / Model'].substring(0,1)}
                     </AvailabilityLabel>
                     <ul className={s.roomsList}>
-                        <li>3 bedrooms</li>
-                        <li>6 bathrooms</li>
+                        <li>{houseData['   / Number of Bedrooms']} bedrooms</li>
+                        <li>{houseData['   / Number Of Bathrooms ']} bathrooms</li>
                     </ul>
                     <ul className={s.sizeInfoList}>
-                        {sizes.map((size, i) => (
-                            <li className={s.sizeInfoItem} key={`item_${i}`}>
+                            <li className={s.sizeInfoItem}>
                                 <span className={s.sizeValue}>
-                                    {size.value}
+                                   {houseData['Build-UP Area']}
                                 </span>
                                 <span className={s.sizeDescription}>
-                                    {size.description}
+                                    Build-UP Area
                                 </span>
                             </li>
-                        ))}
+                        <li className={s.sizeInfoItem}>
+                                <span className={s.sizeValue}>
+                                   {houseData['Guestroom size /  ']}
+                                </span>
+                            <span className={s.sizeDescription}>
+                                    Guestroom size
+                                </span>
+                        </li>
+                        <li className={s.sizeInfoItem}>
+                                <span className={s.sizeValue}>
+                                   {houseData['Kitchen size /  ']}
+                                </span>
+                            <span className={s.sizeDescription}>
+                                    Kitchen size
+                                </span>
+                        </li>
+                        <li className={s.sizeInfoItem}>
+                                <span className={s.sizeValue}>
+                                   {houseData['Living Room size /   ']}
+                                </span>
+                            <span className={s.sizeDescription}>
+                                    Living Room size
+                                </span>
+                        </li>
+                        <li className={s.sizeInfoItem}>
+                                <span className={s.sizeValue}>
+                                   {houseData['Master Bedroom size /    ']}
+                                </span>
+                            <span className={s.sizeDescription}>
+                                    Master Bedroom size
+                                </span>
+                        </li>
                     </ul>
                 </div>
                 <div onClick={handleButtonClick} className={s.buttons}>
