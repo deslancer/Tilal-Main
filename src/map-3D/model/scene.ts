@@ -52,35 +52,6 @@ export const createScene = async (canvas: HTMLCanvasElement): Promise<BABYLON.Sc
 
 
 
-
-    scene.onPointerDown = () =>{
-        const pickResult = scene.pick(scene.pointerX, scene.pointerY);
-
-        if (pickResult && pickResult.hit) {
-            //@ts-ignore
-            const name = pickResult.pickedMesh.name
-
-            const sliced_name = name.substring(0, 6).toLowerCase();
-            const mesh_number = name.substring(7, name.length)
-            console.log(mesh_number)
-
-            //@ts-ignore
-           if(pickResult.pickedMesh.name.includes("Type_")){
-               getCSV().then((res)=>{
-                   useAppStore.setState({
-                       housesData: res,
-                   })
-                   useAppStore.setState({
-                       selectedHouse: mesh_number,
-                   })
-                   window.location.assign(`/flat?file=${sliced_name}`);
-               })
-
-            }
-
-        }
-    }
-
     document.onkeyup = function (e) {
         const evt = window.event || e;
         //console.log(evt.keyCode);

@@ -1,6 +1,8 @@
 import {ILoaderService} from "../interfaces/ILoaderService";
 import {useAppStore} from "../../store/store";
 import * as BABYLON from "babylonjs";
+import getCSV from "../getDataFromCSV";
+import {AbstractMesh} from "babylonjs/Meshes/abstractMesh";
 
 export class SetupMainScene {
     private loaderService: ILoaderService;
@@ -28,6 +30,7 @@ export class SetupMainScene {
                 })
 
                 const ground = this.scene.getMeshByName('Road_Plane_1400m_Web');
+
                 if (ground) {
 
                     const ground2KTexture = new BABYLON.Texture('./assets/models/Road_Web_Cut_2K_Color.jpg', this.scene);
@@ -65,9 +68,38 @@ export class SetupMainScene {
 
 
                 }
+                actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnLeftPickTrigger, (ev) => {
+                    if (ev.meshUnderPointer) {
+                        const name = ev.meshUnderPointer.name
+                        const sliced_name = name.substring(0, 6).toLowerCase();
+                        const mesh_number = name.substring(7, name.length)
+                        console.log(mesh_number)
+
+                        if(name.includes("Type_")){
+                            getCSV().then((res)=>{
+                                useAppStore.setState({
+                                    housesData: res,
+                                })
+                                useAppStore.setState({
+                                    selectedHouse: mesh_number,
+                                })
+                                useAppStore.setState({
+                                    selectedHouseName: sliced_name
+                                })
+                                useAppStore.setState({
+                                    isHouseSelected: true
+                                })
+                            })
+
+                        }
+                    }
+
+
+                }))
 
                 actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger, (ev) => {
                     const meshUnder = ev.meshUnderPointer;
+
                     if (meshUnder) {
                         let childMeshes = meshUnder.subMeshes;
                         let min = childMeshes[0].getBoundingInfo().boundingBox.minimumWorld;
@@ -96,18 +128,20 @@ export class SetupMainScene {
                             shell_box.material = emissive_material;
                             emissive_material.alpha = 0.5;
                             emissive_material.emissiveColor = BABYLON.Color3.FromHexString('#11B39B');
-                            emissive_material.diffuseColor =  BABYLON.Color3.FromHexString('#11B39B');
+                            emissive_material.diffuseColor = BABYLON.Color3.FromHexString('#11B39B');
 
                         }
                     }
                 }));
                 //if hover is over remove highlight of the mesh
-                actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,  (ev) => {
+                actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger, (ev) => {
                     const meshUnder = ev.meshUnderPointer;
                     if (meshUnder) {
                         const shell = this.scene.getMeshByName("shell_box" + meshUnder.id);
+                        const plane = this.scene.getMeshByName("btn_" + meshUnder.id);
                         const material = this.scene.getMaterialByName("shellMaterial" + meshUnder.id);
                         shell?.dispose();
+                        plane?.dispose();
                         material?.dispose();
                     }
                 }));

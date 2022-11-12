@@ -1,0 +1,59 @@
+@import '../../../styles/media_queries';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
+
+.wrapper {
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+    font-family: 'Inter', sans-serif;
+
+    /* System/White */
+
+    background: #ffffff;
+    border-radius: 5px;
+    @include respond-above(md) {
+        width: 140px;
+    }
+    @include respond-above(lg) {
+        width: 320px;
+    }
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+    padding: 0px 20px 15px;
+    @include respond-above(md) {
+        width: 100%;
+    }
+    @include respond-above(lg) {
+        padding: 0px 30px 40px;
+    }
+}
+.title {
+    display: block;
+    padding: 1rem;
+}
+.btns{
+    display: flex;
+}
+.btn {
+    margin: 0 0.5rem;
+    padding: 12px 20px;
+    display: block;
+    cursor: pointer;
+    /* System/Green */
+    border-radius: 2px;
+    @include respond-above(md) {
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+}
+

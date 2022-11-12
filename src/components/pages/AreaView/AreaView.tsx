@@ -20,6 +20,20 @@ const AreaView: React.FC = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const { loading, progress } = useAppStore();
     const { open, close, setModalProps } = useModal();
+
+
+    useEffect(() => {
+        // подключаемся к хранилищу при монтировании,
+        // отключаемся при размонтировании
+        const unsubscribe = useAppStore.subscribe((state)=>{
+            if (state.isHouseSelected){
+                open('confirmation')
+            }
+        })
+        return () => {
+            unsubscribe()
+        }
+    }, [])
     useEffect(()=>{
         if (loading){
             open("loading", { initialProps: { progress: 0 } });

@@ -10,7 +10,10 @@ interface AppState {
     housesData: Array<object>;
     setHousesData: (data: Array<object>) => void;
     selectedHouse: string;
+    selectedHouseName: string;
     setSelectedHouse: (selectedHouse: string) => void;
+    setSelectedHouseName: (selectedHouseName: string) => void;
+    isHouseSelected: boolean;
 }
 type MyPersist = (
     config: StateCreator<AppState>,
@@ -43,6 +46,13 @@ export const useAppStore = create<AppState>(
                     ...state,
                     selectedHouse
                 })),
+            selectedHouseName: '',
+            setSelectedHouseName: (selectedHouseName) =>
+                set((state) => ({
+                    ...state,
+                    selectedHouseName
+                })),
+            isHouseSelected: false
         }),
         {
             name: 'houses-data', // name of item in the storage (must be unique)

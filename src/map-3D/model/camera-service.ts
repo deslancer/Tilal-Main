@@ -13,7 +13,7 @@ export class CameraService {
 		const camera = new BABYLON.ArcRotateCamera( "camera",
 			3.683,
 			1.078,
-			254,
+			354,
 			new BABYLON.Vector3( 0, 0, 0 ),
 			this.scene );
 		camera.attachControl( this.canvas, true );
