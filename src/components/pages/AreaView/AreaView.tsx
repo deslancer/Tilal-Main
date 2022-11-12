@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useMemo, useRef} from 'react';
 import Container from '../../atoms/Container';
 import NavigationBreadcrumbs from '../../atoms/NavigationBreadcrumbs';
 import TypesMenu from '../../atoms/TypesMenu';
@@ -20,7 +20,6 @@ const AreaView: React.FC = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const { loading, progress } = useAppStore();
     const { open, close, setModalProps } = useModal();
-
 
     useEffect(() => {
         // подключаемся к хранилищу при монтировании,

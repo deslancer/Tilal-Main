@@ -7,9 +7,11 @@ import {useAppStore} from "../../../store/store";
 
 const ConfirmationModal: React.FC = () => {
     const { close } = useModal();
-    const {selectedHouseName} = useAppStore();
+    const {selectedHouseName, housesData} = useAppStore();
     const goToPage = ()=>{
-        window.location.assign(`/flat?file=${selectedHouseName}`);
+        if (housesData){
+            window.location.assign(`/flat?file=${selectedHouseName}`);
+        }
     }
     const goBack = ()=>{
         close();
@@ -22,7 +24,7 @@ const ConfirmationModal: React.FC = () => {
             <div className={s.container}>
                     <h4 className={s.title}>Show House Details?</h4>
                 <div className={s.btns}>
-                    <Button className={s.btn} onClick={close} mode="main">
+                    <Button className={s.btn} onClick={goBack} mode="main">
                         Go Back
                     </Button>
                     <Button className={s.btn} onClick={goToPage} mode="active">

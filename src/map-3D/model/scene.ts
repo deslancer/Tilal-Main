@@ -6,7 +6,7 @@ import {EnvironmentService} from "./environment-service";
 import {MaterialsService} from "./materials-service";
 import {SetupMainScene} from "./setup-main-scene";
 import {useAppStore} from "../../store/store";
-import getCSV from "../getDataFromCSV";
+
 export const createScene = async (canvas: HTMLCanvasElement): Promise<BABYLON.Scene> => {
     useAppStore.setState({
         loading: true
