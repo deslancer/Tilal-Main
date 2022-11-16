@@ -12,7 +12,7 @@ type FilterItems = {
 const items: FilterItems = [
     {
         heading: 'Facing',
-        key: 'Unit front compass /  ',
+        key: 'Unitfrontcompass',
         checkbox: ['South', 'North', 'East', 'West'],
     },
     {
@@ -22,12 +22,12 @@ const items: FilterItems = [
     },
     {
         heading: 'Size of Plot',
-        key: '  / Land Area',
+        key: 'LandArea',
         checkbox: ['Up to 250sq/m', 'Over 250sq/m'],
     },
     {
         heading: 'Number house',
-        key: ' / Model',
+        key: 'Model',
         checkbox: ['Single', 'Duplex'],
     },
     {
