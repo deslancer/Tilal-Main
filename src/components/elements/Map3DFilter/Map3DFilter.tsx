@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React from "react";
 import Details from "../../atoms/Details";
 import s from "./MapFilter.module.scss";
 import Checkbox3D from "../../atoms/Checkbox3D";
