@@ -27,7 +27,6 @@ function csvJSON(csv: string) {
     const lines = csv.split('\n')
     const result = []
     const headers = lines[0].split(',')
-
     for (let i = 1; i < lines.length; i++) {
         if (!lines[i])
             continue
@@ -35,7 +34,15 @@ function csvJSON(csv: string) {
         const currentline = lines[i].split(',')
 
         for (let j = 0; j < headers.length; j++) {
-            obj[headers[j]] = currentline[j]
+            if(headers[j] && currentline[j]){
+                let header = headers[j]
+                    .replace(/^[^a-z]+\//i, '')
+                    .replace(/\//g, '')
+                    .replace(/\s+/g, '')
+                console.log(header)
+
+                obj[header] = currentline[j]
+            }
         }
         result.push(obj)
     }

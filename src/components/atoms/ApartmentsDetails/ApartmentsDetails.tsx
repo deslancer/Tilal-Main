@@ -62,15 +62,15 @@ const ApartmentsDetails: React.FC<{
     const { selectedHouse, housesData } = useAppStore();
     let houseData: any = {};
     housesData.map((obj: any)=> {
-        if(selectedHouse == obj['  / Land Number']){
+        if(selectedHouse == obj['LandNumber']){
             houseData = obj;
         }
     } )
     return (
         <Details onOpen={onOpen} register={register}>
             <div className={s.summary}>
-                <span className={s.status}>{houseData['Unit front compass /  ']}</span>
-                <span className={s.title}>№{selectedHouse} {houseData[' / Model'].substring(1,houseData[' / Model'].length)}</span>
+                <span className={s.status}>{houseData['Unitfrontcompass']}</span>
+                <span className={s.title}>№{selectedHouse} {houseData['Model'].substring(1,houseData['Model'].length)}</span>
             </div>
             <div className={s.details}>
                 <div className={s.mainInfo}>
@@ -78,16 +78,16 @@ const ApartmentsDetails: React.FC<{
                         className={s.statusLabel}
                         availability={houseData['Availability']}
                     >
-                        Type {houseData[' / Model'].substring(0,1)}
+                        Type {houseData['Model'].substring(0,1)}
                     </AvailabilityLabel>
                     <ul className={s.roomsList}>
-                        <li>{houseData['   / Number of Bedrooms']} bedrooms</li>
-                        <li>{houseData['   / Number Of Bathrooms ']} bathrooms</li>
+                        <li>{houseData['NumberofBedrooms']} bedrooms</li>
+                        <li>{houseData['NumberOfBathrooms']} bathrooms</li>
                     </ul>
                     <ul className={s.sizeInfoList}>
                             <li className={s.sizeInfoItem}>
                                 <span className={s.sizeValue}>
-                                   {houseData['Build-UP Area']}
+                                   {houseData['Build-UPArea']}
                                 </span>
                                 <span className={s.sizeDescription}>
                                     Build-UP Area
@@ -95,7 +95,7 @@ const ApartmentsDetails: React.FC<{
                             </li>
                         <li className={s.sizeInfoItem}>
                                 <span className={s.sizeValue}>
-                                   {houseData['Guestroom size /  ']}
+                                   {houseData['Guestroomsize']}
                                 </span>
                             <span className={s.sizeDescription}>
                                     Guestroom size
@@ -103,7 +103,7 @@ const ApartmentsDetails: React.FC<{
                         </li>
                         <li className={s.sizeInfoItem}>
                                 <span className={s.sizeValue}>
-                                   {houseData['Kitchen size /  ']}
+                                   {houseData['Kitchensize']}
                                 </span>
                             <span className={s.sizeDescription}>
                                     Kitchen size
@@ -111,7 +111,7 @@ const ApartmentsDetails: React.FC<{
                         </li>
                         <li className={s.sizeInfoItem}>
                                 <span className={s.sizeValue}>
-                                   {houseData['Living Room size /   ']}
+                                   {houseData['LivingRoomsize']}
                                 </span>
                             <span className={s.sizeDescription}>
                                     Living Room size
@@ -119,7 +119,7 @@ const ApartmentsDetails: React.FC<{
                         </li>
                         <li className={s.sizeInfoItem}>
                                 <span className={s.sizeValue}>
-                                   {houseData['Master Bedroom size /    ']}
+                                   {houseData['MasterBedroomsize']}
                                 </span>
                             <span className={s.sizeDescription}>
                                     Master Bedroom size

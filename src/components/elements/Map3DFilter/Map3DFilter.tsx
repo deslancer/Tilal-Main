@@ -5,28 +5,34 @@ import Checkbox3D from "../../atoms/Checkbox3D";
 
 type FilterItems = {
     heading: string;
+    key: string;
     checkbox: string[];
 }[];
 
 const items: FilterItems = [
     {
         heading: 'Facing',
+        key: 'Unit front compass /  ',
         checkbox: ['South', 'North', 'East', 'West'],
     },
     {
         heading: 'Availability',
+        key: 'Availability',
         checkbox: ['Available', 'Reserved', 'Not Available']
     },
     {
         heading: 'Size of Plot',
+        key: '  / Land Area',
         checkbox: ['Up to 250sq/m', 'Over 250sq/m'],
     },
     {
         heading: 'Number house',
+        key: ' / Model',
         checkbox: ['Single', 'Duplex'],
     },
     {
         heading: 'Other',
+        key: '',
         checkbox: ['Close to facilities', 'Close to mosque', 'Corner villas'],
     },
 ];
@@ -40,7 +46,7 @@ const Map3DFilter = ({ ...props }: any) => {
                     <li key={item.heading}>
                         <h5 className={s.heading}>{item.heading}</h5>
                         {item.checkbox.map((chk, idx)=>(
-                            <Checkbox3D children={chk} key={idx}/>
+                            <Checkbox3D value={chk} property={item.key} key={idx}/>
                         ))}
 
                     </li>
